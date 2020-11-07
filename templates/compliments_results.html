@@ -4,11 +4,17 @@
         <title>Compliments Results</title>
     </head>
     <body>
-        <!-- Your HTML code goes here! -->
+        {% if wants_compliments == "yes" %}
+            <p>Hello, {{ users_name.capitalize() }} I hope you are doing well!</p>
+            <p>Remeber that you are:</p>
+            {% for i in range(num_compliments) %}
+                <ul>
+                    <li>{{ list_of_compliments[i] }}</li>
+                </ul>
+            {% endfor %}
 
-        
-
-        
-        
+        {% elif wants_compliments == "no" %}
+            <p>Hello, {{ users_name.capitalize() }} I hope you are doing well!</p>
+        {% endif %}
     </body>
 </html>

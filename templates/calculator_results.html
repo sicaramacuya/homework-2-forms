@@ -4,12 +4,17 @@
         <title>Calculator Results</title>
     </head>
     <body>
-        <!-- Your HTML code goes here! -->
+        {% if operation == "add" %}
+            <p>You chose to {{ operation }} {{ operand1 }} and {{ operand2 }}. Your result is: {{ operand1 + operand2 }}</p>
 
+        {% elif operation == "subtract" %}
+            <p>You chose to {{ operation }} {{ operand1 }} and {{ operand2 }}. Your result is: {{ operand1 - operand2 }}</p>
 
+        {% elif operation == "multiply" %}
+            <p>You chose to {{ operation }} {{ operand1 }} and {{ operand2 }}. Your result is: {{ operand1 * operand2 }}</p>
 
-
-
-        
+        {% elif operation == "divide" %}
+            <p>You chose to {{ operation }} {{ operand1 }} and {{ operand2 }}. Your result is: {{ operand1 / operand2 }}</p>
+        {% endif %}
     </body>
-</html>
+</html> 
