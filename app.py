@@ -39,7 +39,7 @@ def favorites():
     <form action="/favorites_results" method="get">
         Whats your favorite color?<br>
         <input type="text" name="color"><br>
-        Whats your favorite anima?<br>
+        Whats your favorite animal?<br>
         <input type="text" name="animal"><br>
         Whats your favorite city?<br>
         <input type="text" name="city"><br>
