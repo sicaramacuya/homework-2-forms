@@ -50,7 +50,7 @@ class TestApp(unittest.TestCase):
         self.assertIn('favorite city', result_page_text)
 
     def test_favorites_results(self):
-        url = 'favorites_results?color=purple&animal=penguin&city=San%20Francisco'
+        url = 'favorites_results?color=purple&animal=penguin&city=San+Francisco'
         res = app.test_client().get(url)
         self.assertEqual(res.status_code, 200)
 
