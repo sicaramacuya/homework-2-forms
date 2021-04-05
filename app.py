@@ -94,56 +94,48 @@ def calculator_results():
     
     return render_template('calculator_results.html', **context)
 
-# List of compliments to be used in the `compliments_results` route (feel free
-# to add your own!)
-# https://systemagicmotives.com/positive-adjectives.htm
-list_of_compliments = [
-    'awesome',
-    'beatific',
-    'blithesome',
-    'conscientious',
-    'coruscant',
-    'erudite',
-    'exquisite',
-    'fabulous',
-    'fantastic',
-    'gorgeous',
-    'indubitable',
-    'ineffable',
-    'magnificent',
-    'outstanding',
-    'propitioius',
-    'remarkable',
-    'spectacular',
-    'splendiferous',
-    'stupendous',
-    'super',
-    'upbeat',
-    'wondrous',
-    'zoetic'
-]
+HOROSCOPE_PERSONALITIES = {
+    'aries': 'Adventurous and energetic',
+    'taurus': 'Patient and reliable',
+    'gemini': 'Adaptable and versatile',
+    'cancer': 'Emotional and loving',
+    'leo': 'Generous and warmhearted',
+    'virgo': 'Modest and shy',
+    'libra': 'Easygoing and sociable',
+    'scorpio': 'Determined and forceful',
+    'sagittarius': 'Intellectual and philosophical',
+    'capricorn': 'Practical and prudent',
+    'aquarius': 'Friendly and humanitarian',
+    'pisces': 'Imaginative and sensitive'
+}
 
-@app.route('/compliments')
-def compliments():
-    """Shows the user a form to get compliments."""
+@app.route('/horoscope')
+def horoscope_form():
+    """Shows the user a form to fill out to select their horoscope."""
+    return render_template('horoscope_form.html')
 
-    return render_template('compliments_form.html')
+@app.route('/horoscope_results')
+def horoscope_results():
+    """Shows the user the result for their chosen horoscope."""
 
-@app.route('/compliments_results')
-def compliments_results():
-    """Show the user some compliments."""
+    # TODO: Get the sign the user entered in the form, based on their birthday
+    horoscope_sign = ''
 
-    num_compliments= int(request.args.get('num_compliments'))
+    # TODO: Look up the user's personality in the HOROSCOPE_PERSONALITIES
+    # dictionary based on what the user entered
+    users_personality = ''
+
+    # TODO: Generate a random number from 1 to 99
+    lucky_number = 0
 
     context = {
-        'users_name': request.args.get('users_name'),
-        'wants_compliments': request.args.get('wants_compliments'),
-        'num_compliments': num_compliments,
-        'list_of_compliments': random.sample(list_of_compliments, k=num_compliments)
+        'horoscope_sign': horoscope_sign,
+        'personality': users_personality, 
+        'lucky_number': lucky_number
     }
 
-    return render_template('compliments_results.html', **context)
-
+    return render_template('horoscope_results.html', **context)
 
 if __name__ == '__main__':
+    app.config['ENV'] = 'development'
     app.run(debug=True)
